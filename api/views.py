@@ -8,6 +8,19 @@ from django.http import Http404
 from rest_framework import mixins, generics
 
 
+# generics.ListCreateApiView
+class CourseListView(generics.ListAPIView, generics.CreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+
+# generics.RetrieveUpdateDestroyAPIView
+class CourseDetailView(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+
+'''
 class CourseListView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
@@ -17,7 +30,8 @@ class CourseListView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Ge
 
     def post(self, request):
         return self.create(request)
-
+'''
+'''
 
 class CourseDetailView(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
                        mixins.DestroyModelMixin):
@@ -32,7 +46,7 @@ class CourseDetailView(generics.GenericAPIView, mixins.RetrieveModelMixin, mixin
 
     def delete(self, request, pk):
         return self.destroy(request, pk)
-
+'''
 
 '''
 # Create your views here.
