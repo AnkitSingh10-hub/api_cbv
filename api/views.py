@@ -6,9 +6,15 @@ from .serializers import *
 from rest_framework import status
 from django.http import Http404
 from rest_framework import mixins, generics
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet, ModelViewSet
 
 
+class CourseViewSet(ModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+
+'''
 class CourseViewSet(ViewSet):
     def list(self, request):
         courses = Course.objects.all()
@@ -33,7 +39,7 @@ class CourseViewSet(ViewSet):
         serializer = CourseSerializer(course)
         return Response(serializer.data)
 
-
+'''
 '''
 # generics.ListCreateApiView
 class CourseListView(generics.ListAPIView, generics.CreateAPIView):
