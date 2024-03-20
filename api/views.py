@@ -17,7 +17,6 @@ class CourseListView(APIView):
 
     def post(self, request):
         serializer = CourseSerializer(data=request.data)
-        print(request.data, "Python data type request.data")
 
         if serializer.is_valid():
             serializer.save()
