@@ -20,7 +20,6 @@ class CourseListView(APIView):
 
         if serializer.is_valid():
             serializer.save()
-            print(serializer.data, "Python data type into object")
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors)
